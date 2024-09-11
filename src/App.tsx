@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Department } from './types/department.type';
+import { DepartmentCard } from './components/department_card';
+
 
 function App() {
+  const [departments, setDepartments] = useState<Department[]>([])
+
+  useEffect(() => {
+    fetchDepartments()
+    return () => {
+      setDepartments([])
+    }
+  }, [])
+
+  const fetchDepartments = async () => {
+    //please run `npx json-server data/db.json --port 8000` first!
+    const response = await fetch('http://localhost:8000/departments')
+    const departmentsData = await response.json()
+    setDepartments(departmentsData)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        departments.length > 0 && (
+          <div className='flex flex-wrap space-x-4'>
+            {
+              departments.map((department) => (
+                <DepartmentCard key={department?.id} data={department} />
+              ))
+            }
+          </div>
+        )
+      }
     </div>
   );
 }
