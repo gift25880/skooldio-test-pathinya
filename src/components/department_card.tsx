@@ -88,6 +88,10 @@ export const DepartmentCard = (props: DepartmentCardPropsType) => {
           <p className="prompt-regular text-[12px] leading-4 text-[#5f5f5f]">คะแนนสูงสุด {props.data?.score?.year?.toString().split('25')?.[1] || '-'}</p>
         </div>
       </div>
+      <div className="flex space-x-5 text-[#48b6a3] items-center pt-4 pb-5 border-b border-b-[#d8d8d8] mb-1">
+        <p className="leading-[14px]">▶</p>
+        <p className="prompt-light text-[16px] leading-4">ดูสัดส่วนคะแนน</p>
+      </div>
     </div>
   );
 };
