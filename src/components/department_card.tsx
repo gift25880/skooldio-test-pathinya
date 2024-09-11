@@ -92,6 +92,13 @@ export const DepartmentCard = (props: DepartmentCardPropsType) => {
         <p className="leading-[14px]">▶</p>
         <p className="prompt-light text-[16px] leading-4">ดูสัดส่วนคะแนน</p>
       </div>
+      <div className="flex justify-between items-center mt-4">
+        <div className="flex items-center space-x-2">
+          <img src="/images/user-solid.svg" className="w-2.5 h-2.5 flex-shrink-0"/>
+          <p className="prompt-light italic text-[12px] leading-4 text-[#9b9b9b]">{props.data?.likes?.toLocaleString() || 0} คนที่สนใจ</p>
+        </div>
+        <img src="/images/upload_icon.svg" className="w-[18px] h-[23px]" />
+      </div>
     </div>
   );
 };

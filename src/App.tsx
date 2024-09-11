@@ -25,7 +25,7 @@ function App() {
     <div>
       {
         departments.length > 0 && (
-          <div className='flex flex-wrap space-x-4'>
+          <div className='space-y-4'>
             {
               departments.map((department) => (
                 <DepartmentCard key={department?.id} data={department} />
